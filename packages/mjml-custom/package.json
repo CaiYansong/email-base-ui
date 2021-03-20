@@ -1,0 +1,41 @@
+{
+  "name": "mjml-custom",
+  "version": "1.0.0",
+  "description": "mjml mock fs&uglify-js for run in react",
+  "keywords": [
+    "mjml",
+    "mjml custom"
+  ],
+  "author": "cys <821566770@qq.com>",
+  "homepage": "",
+  "license": "ISC",
+  "main": "lib/mjml-custom.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "webpack"
+  },
+  "dependencies": {
+    "mjml": "4.9.0",
+    "mjml-validator": "4.9.0",
+    "mjml-core": "4.9.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-decorators": "^7.4.4",
+    "@babel/plugin-proposal-export-default-from": "^7.5.2",
+    "@babel/plugin-proposal-function-bind": "^7.2.0",
+    "@babel/preset-env": "^7.5.5",
+    "babel-loader": "^8.0.6",
+    "uglifyjs-webpack-plugin": "^2.1.3",
+    "webpack": "^4.36.1",
+    "webpack-cli": "^3.3.6"
+  }
+}

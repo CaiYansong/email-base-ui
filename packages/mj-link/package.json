@@ -1,0 +1,24 @@
+{
+  "name": "mj-link",
+  "version": "1.0.0",
+  "description": "mj-link",
+  "keywords": [
+    "edm",
+    "mjml",
+    "link"
+  ],
+  "author": "cys <821566770@qq.com>",
+  "homepage": "",
+  "license": "ISC",
+  "main": "lib/mj-link.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  }
+}
