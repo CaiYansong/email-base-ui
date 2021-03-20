@@ -12,7 +12,7 @@ email base ui
 
 
 ## Command 
-npm run install // use cnpm install packages
+npm run install // install manager packages
 
 lerna bootstrap // use cnpm install packages
 
