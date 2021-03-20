@@ -11,7 +11,9 @@ email base ui
 ```
 
 
-## Api 
+## Command 
 npm run install // use cnpm install packages
+
 lerna bootstrap // use cnpm install packages
+
 npm run start // start story book server
