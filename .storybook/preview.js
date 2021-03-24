@@ -30,7 +30,7 @@ export const decorators = [(Story) => {
           validationLevel: 'strict',
         });
         // console.log('mjml', mjml)
-        html = mjml.html
+        html = '<!DOCTYPE html>' + mjml.html
       }
       iframeDoc.write(html)
       iframeDoc.close();
