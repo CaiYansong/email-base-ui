@@ -30,35 +30,31 @@ registerDependencies({
 */
 class MjBg extends BodyComponent {
   static allowedAttributes = {
-    display: 'enum(inline-block,inline,block,list-item,none)',
+    display: 'enum(inline-block,inline,block)',
     'max-width': 'unit(px,%)',
     width: 'unit(px,%)',
-    'inner-width': 'unit(px,%)',
     height: 'unit(px,%)',
-    'inner-height': 'unit(px,%)',
-    'background-color': 'color',
+    padding: 'unit(px,%){1,4}',
+    'inner-padding': 'unit(px,%){1,4}',
+    'border-radius': 'string',
+    border: 'string',
+    'border-bottom': 'string',
+    'border-left': 'string',
+    'border-right': 'string',
+    'border-top': 'string',
+    direction: 'enum(ltr,rtl)',
+    'text-align': 'enum(left,center,right)',
+    'align': 'enum(left,center,right)',
     'background-url': 'string',
     'background-repeat': 'enum(repeat,no-repeat)',
     'background-size': 'string',
     'background-position': 'string',
     'background-position-x': 'string',
     'background-position-y': 'string',
-    border: 'string',
-    'border-bottom': 'string',
-    'border-left': 'string',
-    'border-radius': 'string',
-    'border-right': 'string',
-    'border-top': 'string',
-    direction: 'enum(ltr,rtl)',
-    padding: 'unit(px,%){1,4}',
-    'padding-top': 'unit(px,%)',
-    'padding-bottom': 'unit(px,%)',
-    'padding-left': 'unit(px,%)',
-    'padding-right': 'unit(px,%)',
-    'inner-padding': 'unit(px,%){1,4}',
-    'text-align': 'enum(left,center,right)',
-    'align': 'enum(auto,center)',
-    'out-section': 'enum(true,false)',
+    'background-color': 'color',
+    'outsize-section': 'enum(true,false)',
+    'inner-width': 'unit(px,%)',
+    'inner-height': 'unit(px,%)',
   }
 
   static defaultAttributes = {
@@ -89,7 +85,7 @@ class MjBg extends BodyComponent {
         'background-color': this.getAttribute('background-color'),
       }
 
-    const isOutSection = this.getAttribute('out-section') == true;
+    const isOutsizeSection = this.getAttribute('outsize-section') == true;
 
     return {
       outDiv: {
@@ -126,10 +122,9 @@ class MjBg extends BodyComponent {
         ...background,
         display: this.getAttribute('display'),
         'max-width': this.getAttribute('max-width'),
-        width: isOutSection ? this.getAttribute('inner-width') : this.getAttribute('width'),
-        height: isOutSection ? this.getAttribute('inner-height') : this.getAttribute('height'),
+        width: isOutsizeSection ? this.getAttribute('inner-width') : this.getAttribute('width'),
+        height: isOutsizeSection ? this.getAttribute('inner-height') : this.getAttribute('height'),
         'border-radius': this.getAttribute('border-radius'),
-        ...(this.getAttribute('align') === 'center' ? { margin: '0 auto' } : {}),
         ...(hasBackgroundUrl ? {
           'line-height': '0',
           'font-size': '0',
@@ -399,14 +394,15 @@ class MjBg extends BodyComponent {
   }
 
   renderBgWrap() {
-    const isOutSection = this.getAttribute('out-section') == true;
-
-    const tdClass = this.getAttribute('css-class') ?
-      `${isOutSection ? 'inner-' : ''}${this.getAttribute('css-class') || ''}-td` : '';
+    const isOutsizeSection = this.getAttribute('outsize-section') == true;
+    let className = this.getAttribute('css-class') || '';
+    if (className && isOutsizeSection) {
+      className = `inner-${className}`;
+    }
 
     return `
       <div ${this.htmlAttributes({
-      class: `inner-mj-bg ${isOutSection ? 'inner-' : ''}${this.getAttribute('css-class') || ''}`,
+      class: `${isOutsizeSection ? 'inner-' : ''}mj-bg ${className}`,
       style: 'div',
     })}>
         <table
@@ -425,7 +421,7 @@ class MjBg extends BodyComponent {
             <tr>
               <td
                 ${this.htmlAttributes({
-      class: `inner-mj-bg-td ${tdClass}`,
+      class: `${isOutsizeSection ? 'inner-' : ''}mj-bg-td ${className ? `${className}-td` : ''}`,
       style: 'td',
     })}
               >
@@ -440,14 +436,15 @@ class MjBg extends BodyComponent {
 
   render() {
     let bgWrap = this.renderBgWrap();
-    const isOutSection = this.getAttribute('out-section') == true;
-    const tdClass = this.getAttribute('css-class') ? `wrap-${this.getAttribute('css-class') || ''}-td` : '';
 
-    if (isOutSection) {
+    if (this.getAttribute('outsize-section') == true) {
+      const className = this.getAttribute('css-class') || '';
+      const tdClass = className ? `outsize-${className}-td` : '';
+
       bgWrap = `
       <div
       ${this.htmlAttributes({
-        class: `wrap-mj-bg ${this.getAttribute('css-class') || ''}`,
+        class: `outsize-mj-bg ${className}`,
         style: 'outDiv'
       })}>
         <table
@@ -464,7 +461,7 @@ class MjBg extends BodyComponent {
               <tr>
                 <td
                   ${this.htmlAttributes({
-        class: `wrap-mj-bg-td ${tdClass}`,
+        class: `outsize-mj-bg-td ${tdClass}`,
         style: 'outTd',
       })}
                 >

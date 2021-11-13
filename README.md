@@ -17,3 +17,5 @@ npm run install // install manager packages
 lerna bootstrap // use cnpm install packages
 
 npm run start // start story book server
+
+lerna create mj-xxx // create new package

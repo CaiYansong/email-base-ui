@@ -1,0 +1,29 @@
+{
+  "name": "mj-flex",
+  "version": "1.0.0",
+  "description": "mock flex by table",
+  "keywords": [
+    "flex"
+  ],
+  "author": "cys <821566770@qq.com>",
+  "homepage": "https://github.com/YansongCai/email-base-ui#readme",
+  "license": "ISC",
+  "main": "lib/mj-flex.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YansongCai/email-base-ui.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/YansongCai/email-base-ui/issues"
+  }
+}

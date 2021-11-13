@@ -34,10 +34,10 @@ class MjLink extends BodyComponent {
   static allowedAttributes = {
     href: 'string',
     width: 'unit(px,%)',
-    display: 'enum(inline-block, inline, block, list-item, none)',
+    display: 'enum(inline-block,inline,block)',
     padding: 'unit(px){1,4}',
     align: 'enum(left,right,center)',
-    'text-decoration': 'enum(line-through, underline, overline, none)',
+    'text-decoration': 'enum(line-through,underline,overline,none)',
     'font-size': 'unit(px)',
     'background-color': 'color',
     color: 'color',
@@ -124,7 +124,7 @@ class MjLink extends BodyComponent {
             <a
               ${this.htmlAttributes(htmlAttributes)}
               >
-              <table border="0" cellpadding="0" cellspacing="0" role="presentation">
+              <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%" style="width: 100%;">
                 <tbody>
                 ${this.renderChildren(this.props.children, renderChildrenOpt)}
               </tbody>
